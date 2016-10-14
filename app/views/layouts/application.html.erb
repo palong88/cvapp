@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cvapp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+    <div class="wrapper">
+      <%= render 'layouts/sidebar' %>
+      <div class="main-panel">
+        <%= render 'layouts/header' %>
+          <div class="content">
+              <div class="container-fluid">
+                  <%= yield %>
+              </div>
+          </div>
+        <%= render 'layouts/footer' %>
+      </div>
+    </div>
+  </body>
+</html>
