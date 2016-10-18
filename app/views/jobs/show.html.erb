@@ -1,0 +1,113 @@
+<!-- <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @job.name %>
+</p>
+<div class="text-center col-md-4 col-md-offset-4">
+  <%= link_to 'Upload CVs', new_cv_path, class: " btn btn-info btn-fill btn-wd"%>
+</div>
+<p>
+  <strong>Description:</strong>
+  <%= @job.description %>
+</p>
+
+<p>
+  <strong>Closing date:</strong>
+  <%= @job.closing_date %>
+</p>
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>
+
+ -->
+
+
+<div class="col-lg-11 col-md-11">
+
+     <div class="header" >
+         <h1 class="title"><%= @job.name %> <span style="font-size:16px;"><%= link_to 'Edit Job', edit_job_path(@job) %> </span></h1>
+           <p class="category">Close Date: <%= @job.closing_date %></p>
+     </div>
+      <hr>
+<!--START OF PILL NAV MENU  -->
+     <ul class="nav nav-pills" style="padding-bottom:15px;">
+       <li class="active"><a data-toggle="pill" href="#candidate">Candidates</a></li>
+       <li><a data-toggle="pill" href="#description">Description</a></li>
+    </ul>
+<!-- END OF PILL NAV MENU -->
+
+    <div class="tab-content"><!--Tab CONTENT START -->
+
+
+      <div id="candidate" class="tab-pane fade in active"><!--CANDIDATE TAB CONTENT START -->
+
+        <% if @job.cvs.empty? %>
+
+          <div class="text-center">
+            <h1>Please upload your CV's</h1>
+            <%= link_to 'Add CVs', new_cv_path(:job_id => @job.id), class: " btn btn-info btn-fill btn-wd"%>
+          </div>
+
+        <% else %>
+          <% if @job.candidates.empty? %>
+            <div class="text-center">
+              <h1>Thanks for uploading your CV's, your CV's will be processed and candidates will apear here within 24hrs. </h1>
+              <%= link_to 'Add More CVs', new_cv_path(:job_id => @job.id), class: " btn btn-info btn-fill btn-wd"%>
+            </div>
+          <% else %>
+          <div class="col-md-12">
+                      <div class="card card-plain">
+                          <div class="header">
+                              <h4 class="title">candidates</h4>
+                              <p class="category">Candidates are ranked by score</p>
+                          </div>
+                          <div class="content table-responsive table-full-width">
+                              <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th>ID</th>
+                                      <th>Name</th>
+                                      <th>CV</th>
+                                      <th>Score</th>
+                                    </tr>
+                                </thead>
+
+                                  <tbody>
+                                <% @job.candidates.each do |candidate| %>
+                                      <tr>
+                                        <td><%= candidate.id %></td>
+                                        <td><%= candidate.name %></td>
+                                        <td><%= "CV HERE" %></td>
+                                        <td><%= candidate.id %></td>
+                                      </tr>
+                                      <% end %>
+                                  </tbody>
+                              </table>
+
+                          </div>
+                      </div>
+                  </div>
+          <% end %>
+
+
+
+        <% end %>
+        <!--TABLE HEAD  -->
+
+        </div>
+
+<!--END OF CANDIDATE TAB CONTENT  -->
+<!--DESCRIPTION TAB CONTENT  -->
+      <div id="description" class="tab-pane">
+
+        <div class="content" style="padding-bottom:25px;">
+           <h3 style="padding-bottom:15px;">Job Description</h3>
+           <p class="description"> <%= raw @job.description %> </p>
+        </div>
+
+      </div>
+<!--END OF DESCRIPTION TAB CONTENT  -->
+
+  </div><!--END of Tab CONTENT  -->
+</div>

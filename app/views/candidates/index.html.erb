@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+                    <div class="col-md-12">
+                        <%= link_to 'New Candidate', new_candidate_path, class: "" %>
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Current Candidates</h4>
+                                <p class="category">Here is a list of candidates</p>
+                            </div>
+
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                      <th> <strong> ID </strong> </th>
+                                    	<th> Name</th>
+                                    	<!-- <th>Description</th> -->
+                                    	<th> CV</th>
+                                      <th> Job</th>
+                                      <th>Delete  </th>
+                                    </tr></thead>
+                                    <tbody>
+                                      <% @candidates.each do |candidate| %>
+                                        <tr>
+                                          <td><%= candidate.id %></td>
+                                        	<td><%= candidate.name %></td>
+                                        	<td>CV</td>
+                                          <td><%= candidate.job.name %></td>
+                                          <td><%= link_to 'Delete', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                        </tr>
+                                      <% end %>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>

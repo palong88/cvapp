@@ -13,54 +13,38 @@ Tip 2: you can change the color of the active button using the data-active-color
         </div>
 
         <ul class="nav">
-            <li class="active">
-                <a href="dashboard.html">
-                    <i class="ti-panel"></i>
-                    <p>Dashboard</p>
-                </a>
-            </li>
-            <li>
-                <a href="user.html">
-                    <i class="ti-user"></i>
-                    <p>User Profile</p>
-                </a>
-            </li>
-            <li>
-                <a href="table.html">
-                    <i class="ti-view-list-alt"></i>
-                    <p>Table List</p>
-                </a>
-            </li>
-            <li>
-                <a href="typography.html">
-                    <i class="ti-text"></i>
-                    <p>Typography</p>
-                </a>
-            </li>
-            <li>
-                <a href="icons.html">
-                    <i class="ti-pencil-alt2"></i>
-                    <p>Icons</p>
-                </a>
-            </li>
-            <li>
-                <a href="maps.html">
-                    <i class="ti-map"></i>
-                    <p>Maps</p>
-                </a>
-            </li>
-            <li>
-                <a href="notifications.html">
-                    <i class="ti-bell"></i>
-                    <p>Notifications</p>
-                </a>
-            </li>
-    <li class="active-pro">
-                <a href="upgrade.html">
-                    <i class="ti-export"></i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li>
+
+          <div class="text-center">
+            <a href="<%=new_job_url %>">
+               <input type="button"class="btn btn-info btn-fill btn-wd" value="Create a Job" />
+            </a>
+          </div>
+
+          <li class="<%= "active" if current_page? jobs_path %>">
+              <a href="<%= jobs_url %>">
+                  <i class="ti-panel"></i>
+                  <p>Jobs</p>
+              </a>
+          </li>
+
+          <li class="<%= "active" if current_page? candidates_path %>">
+              <a href="<%= candidates_url %>">
+                  <i class="ti-panel"></i>
+                  <p>Candidates</p>
+              </a>
+          </li>
+
+            <% @jobs.each do |job| %>
+                <li class="<%= "active" if current_page? job %>">
+                    <a href="<%= job_path(job) %>">
+                        <i class="ti-panel"></i>
+                        <p><%= job.name %></p>
+                    </a>
+                </li>
+              <% end %>
+
+
+
         </ul>
   </div>
 </div>

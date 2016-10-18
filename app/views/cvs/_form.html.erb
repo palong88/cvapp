@@ -1,0 +1,50 @@
+<%= form_for @cv, url: cvs_path, html: { multipart: true } do |f| %>
+   <% if cv.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(cv.errors.count, "error") %> prohibited this cv from being saved:</h2>
+        <ul>
+        <% cv.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class=" col-lg-8 col-md-7">
+      <div class="content">
+          <form>
+              <div class="row">
+                  <div class="col-md-12 center-block">
+                      <div class="form-group">
+
+                          <div class="field center-block">
+                            <%= f.file_field :file %>
+                          </div>
+                          <div class="input-group">
+                              <label class="input-group-btn">
+                                  <span class="btn btn-primary">
+                                      Browse Files &hellip;  <input type="file" style="display: none;" multiple>
+                                  </span>
+                              </label>
+                              <input type="text" class="form-control" readonly>
+                          </div>
+
+
+                          <div class="field hidden">
+                            <%= f.label :job_id %>
+                            <%= f.text_field :job_id, value: params[:job_id]%>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+              <div class="text-center">
+                <%= link_to 'Cancel', jobs_path, class:"btn btn-danger btn-fill btn-wd" %>
+                  <button type="submit" class="btn btn-info btn-fill btn-wd">Upload CV's</button>
+              </div>
+              <div class="clearfix"></div>
+          </form>
+      </div>
+
+        </div>
+  <% end %>

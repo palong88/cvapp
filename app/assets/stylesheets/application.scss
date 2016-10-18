@@ -25,3 +25,15 @@
  @import "paper/cards";
  @import "paper/chartist";
  @import "paper/responsive";
+
+ //My Suff
+ .center-block {
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
+}
+.center {
+    display:block;
+
+    margin: 0 auto;
+}

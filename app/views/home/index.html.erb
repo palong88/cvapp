@@ -1,1 +1,10 @@
-<h1><%= @message %></h1>
+<% if current_user.nil?  %>
+  <script type="text/javascript">
+    window.location.href="/users/sign_in"
+  </script>
+<% else  %>
+  <script type="text/javascript">
+    window.location.href="/jobs"
+  </script>
+<% end %>
+<!-- current_user.has_role? :admin -->

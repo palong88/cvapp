@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<% if @jobs.empty? %>
+  <div class="text-center">
+    <h3>To get started please create a job. </h3>
+    <%= link_to 'Create a Job', new_job_path(), class: " btn btn-info btn-fill btn-wd"%>
+  </div>
+<% else %>
+
+
+            <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Currently active Jobs</h4>
+                                <p class="category">Here is a list of your open jobs</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                      <th>Job ID</th>
+                                    	<th>Job Title</th>
+                                    	<!-- <th>Description</th> -->
+                                    	<th>Application Closing</th>
+                                      <th>Settings</th>
+                                    </tr></thead>
+                                    <tbody>
+                                      <% @jobs.each do |job| %>
+                                        <tr>
+                                          <td><%= job.id %></td>
+                                        	<td><%= link_to job.name, job %></td>
+                                        	<!-- <td><%=  raw job.description.truncate(200) %></td> -->
+                                        	<td><%= job.closing_date %></td>
+                                          <td><%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                        </tr>
+                                      <% end %>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  <% end %>
