@@ -1,40 +1,25 @@
-<!-- <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @job.name %>
-</p>
-<div class="text-center col-md-4 col-md-offset-4">
-  <%= link_to 'Upload CVs', new_cv_path, class: " btn btn-info btn-fill btn-wd"%>
-</div>
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
-
-<p>
-  <strong>Closing date:</strong>
-  <%= @job.closing_date %>
-</p>
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
-
- -->
-
 
 <div class="col-lg-11 col-md-11">
 
-     <div class="header" >
-         <h1 class="title"><%= @job.name %> <span style="font-size:16px;"><%= link_to 'Edit Job', edit_job_path(@job) %> </span></h1>
-           <p class="category">Close Date: <%= @job.closing_date %></p>
+     <div class="header" style="padding: 15px 10px 25px;">
+         <h1 class="title" ><%= @job.name %> <span style="font-size:16px;"><%= link_to 'Edit Job', edit_job_path(@job) %> </span></h1>
+           <p class="category"> Application Closing Date: <%= @job.closing_date %></p>
+
+             <% if current_user.roles.include? Role.find_by_name('superadmin') %>
+               <div style="padding: 25px 10% 55px;">
+                 <%= link_to 'Add a Candidate', new_candidate_path(:job_id => @job.id), class: " btn btn-info btn-fill btn-wd btn-lg"%>
+                </div>
+             <% end %>
+
      </div>
-      <hr>
+
 <!--START OF PILL NAV MENU  -->
-     <ul class="nav nav-pills" style="padding-bottom:15px;">
-       <li class="active"><a data-toggle="pill" href="#candidate">Candidates</a></li>
-       <li><a data-toggle="pill" href="#description">Description</a></li>
-    </ul>
+  <div style="padding: 10px 10px 25px;">
+       <ul class="nav nav-tabs" >
+         <li class="active"><a data-toggle="tab" href="#candidate">Candidates</a></li>
+         <li><a data-toggle="tab" href="#description">Description</a></li>
+       </ul>
+    </div>
 <!-- END OF PILL NAV MENU -->
 
     <div class="tab-content"><!--Tab CONTENT START -->
@@ -44,49 +29,64 @@
 
         <% if @job.cvs.empty? %>
 
-          <div class="text-center">
-            <h1>Please upload your CV's</h1>
-            <%= link_to 'Add CVs', new_cv_path(:job_id => @job.id), class: " btn btn-info btn-fill btn-wd"%>
+          <div class="text-center" style="padding: 25px 10% 15px;">
+            <h1 style="padding: 25px 20% 10px;">Please upload your CVs</h1>
+            <p  style="padding: 10px 10% 15px;">Once you've uploaded your first CV, our expert team will work with our A.I to identify
+              the best candidates based on your job description.
+            </p>
+            <div style="padding: 25px 10% 55px;">
+              <%= link_to 'Add CVs', new_cv_path(:job_id => @job.id), class: " btn btn-info btn-fill btn-wd btn-lg"%>
+            </div>
           </div>
 
         <% else %>
           <% if @job.candidates.empty? %>
-            <div class="text-center">
-              <h1>Thanks for uploading your CV's, your CV's will be processed and candidates will apear here within 24hrs. </h1>
-              <%= link_to 'Add More CVs', new_cv_path(:job_id => @job.id), class: " btn btn-info btn-fill btn-wd"%>
-            </div>
+              <div class="text-center" style="padding: 25px 10% 15px;">
+                <h1 style="padding: 25px 10% 10px;">Thank you for uploading your CVs</h1>
+                <p  style="padding: 10px 10% 15px;">Our expert team will work with our A.I. to identify
+                  the best candidates within the next 24hrs.
+                </p>
+                <div style="padding: 25px 10% 55px;">
+                  <%= link_to 'Add More CVs', new_cv_path(:job_id => @job.id), class: " btn btn-info btn-fill btn-wd btn-lg"%>
+                </div>
+              </div>
           <% else %>
           <div class="col-md-12">
-                      <div class="card card-plain">
-                          <div class="header">
-                              <h4 class="title">candidates</h4>
-                              <p class="category">Candidates are ranked by score</p>
-                          </div>
-                          <div class="content table-responsive table-full-width">
-                              <table class="table table-hover">
-                                  <thead>
+                  <div class="card card-plain">
+                      <div class="header" style="padding: 35px 1%" >
+                          <h2 class="title">Candidates</h2>
+                          <p class="category">Candidates are ranked by score</p>
+                      </div>
+                      <div class="card">
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
                                     <tr>
+                                    <% if current_user.roles.include? Role.find_by_name('superadmin') %>
                                       <th>ID</th>
+                                    <% end %>
                                       <th>Name</th>
                                       <th>CV</th>
                                       <th>Score</th>
                                     </tr>
-                                </thead>
-
-                                  <tbody>
-                                <% @job.candidates.each do |candidate| %>
-                                      <tr>
-                                        <td><%= candidate.id %></td>
-                                        <td><%= candidate.name %></td>
-                                        <td><%= "CV HERE" %></td>
-                                        <td><%= candidate.id %></td>
-                                      </tr>
+                                  </thead>
+                                    <tbody>
+                                      <% @job.candidates.each do |candidate| %>
+                                        <tr>
+                                        <% if current_user.roles.include? Role.find_by_name('superadmin') %>
+                                          <td><%= candidate.id %></td>
+                                        <% end %>
+                                          <td><%= candidate.name %></td>
+                                          <td><%= link_to "Download CV", candidate.cv.url(:original, false) %></td>
+                                          <td><%= candidate.score %>%</td>
+                                        </tr>
                                       <% end %>
-                                  </tbody>
-                              </table>
+                                    </tbody>
+                                </table>
 
-                          </div>
-                      </div>
+                            </div>
+                        </div>
+                  </div>
                   </div>
           <% end %>
 
@@ -101,7 +101,7 @@
 <!--DESCRIPTION TAB CONTENT  -->
       <div id="description" class="tab-pane">
 
-        <div class="content" style="padding-bottom:25px;">
+        <div class="content" style="padding-bottom:85px;">
            <h3 style="padding-bottom:15px;">Job Description</h3>
            <p class="description"> <%= raw @job.description %> </p>
         </div>

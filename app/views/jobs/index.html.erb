@@ -1,12 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-
-
 <% if @jobs.empty? %>
-  <div class="text-center">
-    <h3>To get started please create a job. </h3>
-    <%= link_to 'Create a Job', new_job_path(), class: " btn btn-info btn-fill btn-wd"%>
+<div class="row text-center">
+  <div style="padding: 25px 10% 15px;">
+    <h1>To get started please create a job. </h1>
+    <h4>Once you've created your first job you can start uploading CVs.</h4>
   </div>
+</div>
+<div class="row">
+  <div class="text-center" style="padding: 10px 30% 15px;">
+    <%= link_to 'Create a Job', new_job_path(), class: " btn btn-info btn-fill btn-wd btn-lg"%>
+  </div>
+</div>
+
+
 <% else %>
 
 

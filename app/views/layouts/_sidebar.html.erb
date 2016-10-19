@@ -26,13 +26,14 @@ Tip 2: you can change the color of the active button using the data-active-color
                   <p>Jobs</p>
               </a>
           </li>
-
-          <li class="<%= "active" if current_page? candidates_path %>">
-              <a href="<%= candidates_url %>">
-                  <i class="ti-panel"></i>
-                  <p>Candidates</p>
-              </a>
-          </li>
+          <% if current_user.roles.include? Role.find_by_name('superadmin') %>
+                <li class="<%= "active" if current_page? candidates_path %>">
+                    <a href="<%= candidates_url %>">
+                        <i class="ti-panel"></i>
+                        <p>Candidates</p>
+                    </a>
+                </li>
+          <% end %>
 
             <% @jobs.each do |job| %>
                 <li class="<%= "active" if current_page? job %>">

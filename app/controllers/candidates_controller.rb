@@ -29,7 +29,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
-        format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
+        format.html { redirect_to job_path(:id => params[:candidate][:job_id]), notice: 'Candidate was successfully created.' }
         format.json { render :show, status: :created, location: @candidate }
       else
         format.html { render :new }
@@ -70,6 +70,6 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :score, :job_id)
+      params.require(:candidate).permit(:name, :score, :job_id,:cv)
     end
 end
