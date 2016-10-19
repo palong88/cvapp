@@ -1,5 +1,5 @@
 
-<div class="col-lg-11 col-md-11">
+<div class="col-lg-10 col-md-10 col-md-10 col-md-offset-1">
 
      <div class="header" style="padding: 15px 10px 25px;">
          <h1 class="title" ><%= @job.name %> <span style="font-size:16px;"><%= link_to 'Edit Job', edit_job_path(@job) %> </span></h1>
@@ -71,13 +71,13 @@
                                     </tr>
                                   </thead>
                                     <tbody>
-                                      <% @job.candidates.each do |candidate| %>
+                                      <% @job.candidates.order( 'candidates.score DESC' ).each do |candidate| %>
                                         <tr>
                                         <% if current_user.roles.include? Role.find_by_name('superadmin') %>
                                           <td><%= candidate.id %></td>
                                         <% end %>
                                           <td><%= candidate.name %></td>
-                                          <td><%= link_to "Download CV", candidate.cv.url(:original, false) %></td>
+                                          <td><%= link_to "View CV", candidate.cv.url(:original, false), :target => "_blank" %></td>
                                           <td><%= candidate.score %>%</td>
                                         </tr>
                                       <% end %>

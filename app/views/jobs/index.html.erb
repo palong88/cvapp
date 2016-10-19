@@ -16,17 +16,19 @@
 
 
             <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-10 col-md-offset-1">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Currently active Jobs</h4>
-                                <p class="category">Here is a list of your open jobs</p>
+                                <h4 class="title">Open Jobs</h4>
+                                <p class="category">A list of your open jobs</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
+                                    <% if current_user.roles.include? Role.find_by_name('superadmin') %>
                                       <th>Job ID</th>
+                                      <% end %>
                                     	<th>Job Title</th>
                                     	<!-- <th>Description</th> -->
                                     	<th>Application Closing</th>
@@ -35,7 +37,9 @@
                                     <tbody>
                                       <% @jobs.each do |job| %>
                                         <tr>
+                                        <% if current_user.roles.include? Role.find_by_name('superadmin') %>
                                           <td><%= job.id %></td>
+                                          <% end %>
                                         	<td><%= link_to job.name, job %></td>
                                         	<!-- <td><%=  raw job.description.truncate(200) %></td> -->
                                         	<td><%= job.closing_date %></td>
