@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :puppies
+  resources :requirements
   resources :cvs
   resources :candidates
   resources :jobs

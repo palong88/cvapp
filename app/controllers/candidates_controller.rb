@@ -15,7 +15,7 @@ class CandidatesController < ApplicationController
 
   # GET /candidates/new
   def new
-    @candidate = Candidate.new
+      @candidates = Candidate.new
   end
 
   # GET /candidates/1/edit
@@ -70,6 +70,8 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :score, :job_id,:cv)
+      params.require(:candidate).permit(:name, :score, :job_id,:cv,:recommendation)
     end
+
+
 end

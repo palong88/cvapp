@@ -18,6 +18,7 @@
        <ul class="nav nav-tabs" >
          <li class="active"><a data-toggle="tab" href="#candidate">Candidates</a></li>
          <li><a data-toggle="tab" href="#description">Description</a></li>
+         <li><a data-toggle="tab" href="#criteria">Criteria</a></li>
        </ul>
     </div>
 <!-- END OF PILL NAV MENU -->
@@ -68,6 +69,7 @@
                                       <th>Name</th>
                                       <th>CV</th>
                                       <th>Score</th>
+                                      <th>Recommendation</th>
                                     </tr>
                                   </thead>
                                     <tbody>
@@ -79,6 +81,7 @@
                                           <td><%= candidate.name %></td>
                                           <td><%= link_to "View CV", candidate.cv.url(:original, false), :target => "_blank" %></td>
                                           <td><%= candidate.score %>%</td>
+                                          <td><%= candidate.recommendation %></td>
                                         </tr>
                                       <% end %>
                                     </tbody>
@@ -104,6 +107,18 @@
         <div class="content" style="padding-bottom:85px;">
            <h3 style="padding-bottom:15px;">Job Description</h3>
            <p class="description"> <%= raw @job.description %> </p>
+        </div>
+
+      </div>
+<!--END OF DESCRIPTION TAB CONTENT  -->
+<!--DESCRIPTION TAB CONTENT  -->
+      <div id="criteria" class="tab-pane">
+
+        <div class="content" style="padding-bottom:85px;">
+           <h3 style="padding-bottom:15px;">Criteria</h3>
+             <% @criterium.each do |criteria| %>
+                <p class="description"> <%= criteria.name %> </p>
+              <% end %>
         </div>
 
       </div>

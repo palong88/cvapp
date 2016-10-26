@@ -1,0 +1,8 @@
+
+
+<%= form_tag "/requirements" do %>
+  <% 3.times do %>
+    <%= render 'form_experience', requirement: @requirement %>
+  <% end %>
+  <%= submit_tag "Submit" %>
+<% end %>

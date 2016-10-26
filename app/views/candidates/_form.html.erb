@@ -24,6 +24,11 @@
     <%= f.number_field :score %>
   </div>
 
+  <div class="field">
+    <%= f.label :recommendation %>
+    <%= f.text_field :recommendation %>
+  </div>
+
   <div class="field hidden">
     <%= f.label :job_id %>
     <%= f.text_field :job_id, value: params[:job_id]%>

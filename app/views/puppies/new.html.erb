@@ -1,0 +1,8 @@
+
+
+<%= form_tag "/puppies" do %>
+  <% 3.times do %>
+    <%= render 'form', puppy: @puppy %>
+  <% end %>
+  <%= submit_tag "Submit" %>
+<% end %>
