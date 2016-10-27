@@ -11,6 +11,8 @@ class CandidatesController < ApplicationController
   # GET /candidates/1
   # GET /candidates/1.json
   def show
+    @job = Job.find(@candidate.job_id)
+    @requirements  = @job.requirements
   end
 
   # GET /candidates/new
