@@ -15,6 +15,7 @@ class RequirementsController < ApplicationController
   # GET /requirements/new
   def new
     @requirement = Requirement.new
+    @job = Job.find(params[:job_id])
   end
 
   # GET /requirements/1/edit
@@ -26,15 +27,16 @@ class RequirementsController < ApplicationController
   def create
 
     params["requirements"].each do |requirement|
-      if requirement["name"] != "" || requirement["level"] != "" || requirement["importance"] != ""
-
-        @requirement = Requirement.new(requirement_params(requirement))
+      @job = Job.find(requirement["job_id"])
+      if requirement["name"] != "" || requirement["level"] != "" || requirement["requirement_type"] != "" || requirement["importance"] != "" || requirement["job_id"] != ""
+        @requirement =   Requirement.new(requirement_params(requirement))
+        @requirement.save
       end
     end
 
     respond_to do |format|
       if @requirement.save
-        format.html { redirect_to Job.find(120), notice: 'Requirement was successfully created.' }
+        format.html { redirect_to @job, notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @requirement }
       else
         format.html { render :new }
@@ -60,9 +62,10 @@ class RequirementsController < ApplicationController
   # DELETE /requirements/1
   # DELETE /requirements/1.json
   def destroy
+    @job = Job.find(params[:job_id])
     @requirement.destroy
     respond_to do |format|
-      format.html { redirect_to requirements_url, notice: 'Requirement was successfully destroyed.' }
+      format.html { redirect_to @job, notice: 'Requirement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -79,7 +82,7 @@ class RequirementsController < ApplicationController
     # end
 
     def requirement_params(my_params)
-      my_params.permit(:name, :level, :importance, :job_id)
+      my_params.permit(:name, :level, :importance, :requirement_type, :job_id)
     end
 
 end

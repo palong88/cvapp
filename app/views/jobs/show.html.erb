@@ -18,7 +18,7 @@
        <ul class="nav nav-tabs" >
          <li class="active"><a data-toggle="tab" href="#candidate">Candidates</a></li>
          <li><a data-toggle="tab" href="#description">Description</a></li>
-         <li><a data-toggle="tab" href="#criteria">Criteria</a></li>
+         <li><a data-toggle="tab" href="#requirement">Requirements</a></li>
        </ul>
     </div>
 <!-- END OF PILL NAV MENU -->
@@ -78,7 +78,7 @@
                                         <% if current_user.roles.include? Role.find_by_name('superadmin') %>
                                           <td><%= candidate.id %></td>
                                         <% end %>
-                                          <td><%= candidate.name %></td>
+                                          <td><%= link_to candidate.name, candidate  %></td>
                                           <td><%= link_to "View CV", candidate.cv.url(:original, false), :target => "_blank" %></td>
                                           <td><%= candidate.score %>%</td>
                                           <td><%= candidate.recommendation %></td>
@@ -112,13 +112,16 @@
       </div>
 <!--END OF DESCRIPTION TAB CONTENT  -->
 <!--DESCRIPTION TAB CONTENT  -->
-      <div id="criteria" class="tab-pane">
+      <div id="requirement" class="tab-pane">
 
         <div class="content" style="padding-bottom:85px;">
-           <h3 style="padding-bottom:15px;">Criteria</h3>
-             <% @criterium.each do |criteria| %>
-                <p class="description"> <%= criteria.name %> </p>
-              <% end %>
+           <h3 style="padding-bottom:15px;">Requirements <span style = "font-size:14px;"><%= link_to "New Requirement", new_requirement_path(:job_id => @job.id) %></span></h3>
+              <%= render 'requirement_experience' %>
+              <%= render 'requirement_skills' %>
+              <%= render 'requirement_education' %>
+              <%= render 'requirement_location' %>
+
+
         </div>
 
       </div>

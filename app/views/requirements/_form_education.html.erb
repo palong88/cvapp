@@ -1,0 +1,48 @@
+
+<% job_id = params[:job_id]%>
+<% job_id %>
+  <div class="card">
+    <div class="header">
+        <h4 class="title">Education</h4>
+        <div class="text-right">
+          <a onclick="addEducationfield()" class="btn btn-sm btn-success btn-icon"><i class="fa fa-plus"></i>Add </a>
+        </div>
+    </div>
+    <div class="content">
+
+
+        <div class="row" id="fields-education">
+              <div class="col-md-5">
+                  <div class="form-group">
+                      <label>Education</label>
+                      <%= text_field_tag "requirements[][name]", nil, size:25, placeholder: 'Computer Science Bsc', class: "form-control border-input "%>
+                    </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Grade</label>
+                        <%= text_field_tag "requirements[][level]", nil, size:25, placeholder: 'First Class Honors', class: "form-control border-input "  %>
+                    </div>
+              </div>
+              <%= text_field_tag "requirements[][requirement_type]", "Education", class: " hidden" %>
+              <%= text_field_tag "requirements[][job_id]", job_id, class: " hidden" %>
+
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">Importance</label>
+                        <%= select_tag "requirements[][importance]", '<option value = "1" >Nice to Have</option><option value = "2" >Important</option>'.html_safe, class: "form-control border-input " %>
+                  </div>
+              </div>
+        </div>
+
+    </div>
+</div>
+
+
+  <script>
+    function addEducationfield() {
+
+       $("#fields-education").append($("#education_field").html())
+        // return true or false, depending on whether you want to allow the `href` property to follow through or not
+      }
+  </script>

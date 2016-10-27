@@ -12,6 +12,8 @@ class JobsController < ApplicationController
   # GET /jobs/1.json
   def show
     # @criterium = @job.criteriumw
+    @requirements = @job.requirements
+    
   end
 
   # GET /jobs/new

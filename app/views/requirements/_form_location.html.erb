@@ -1,0 +1,32 @@
+
+<% job_id = params[:job_id]%>
+
+<div class="card">
+  <div class="header">
+          <h4 class="title">Location</h4>
+
+  </div>
+      <div class="content">
+
+
+        <div class="row" id="fields">
+           <div class="col-md-8">
+                <div class="form-group">
+                    <label>Location</label>
+                    <%= text_field_tag "requirements[][name]", nil, size:25, placeholder: 'Cork City...', class: "form-control border-input "%>
+                  </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Distance (km) </label>
+                <%= number_field_tag "requirements[][level]", nil, size:25, placeholder: '125km', class: "form-control border-input "  %>
+                </div>
+            </div>
+            <%= text_field_tag "requirements[][requirement_type]", "Location", class: " hidden" %>
+            <%= text_field_tag "requirements[][job_id]", job_id, class: " hidden" %>
+
+          </div>
+
+      </div>
+
+</div>
