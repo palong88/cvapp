@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-
-  resources :puppies
-  resources :requirements
-  resources :cvs
-  resources :candidates
-  resources :jobs
+  root "home#index"
+  resources :tests
+  resources :dash
   devise_for :users do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   resources :accounts
-  root to: "home#index"
+
+
 
 end

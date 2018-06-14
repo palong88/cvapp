@@ -8,44 +8,10 @@ Tip 2: you can change the color of the active button using the data-active-color
   <div class="sidebar-wrapper">
         <div class="logo">
             <a href="http://app.onerocket.io" class="simple-text">
-                One <strong>Rocket</strong>
+                Arby <strong>Alerts</strong>
             </a>
         </div>
 
-        <ul class="nav">
 
-          <div class="text-center">
-            <a href="<%=new_job_url %>">
-               <input type="button"class="btn btn-info btn-fill btn-wd" value="Create a Job" />
-            </a>
-          </div>
-
-          <li class="<%= "active" if current_page? jobs_path %>">
-              <a href="<%= jobs_url %>">
-                  <i class="ti-panel"></i>
-                  <p>Jobs</p>
-              </a>
-          </li>
-          <% if current_user.roles.include? Role.find_by_name('superadmin') %>
-                <li class="<%= "active" if current_page? candidates_path %>">
-                    <a href="<%= candidates_url %>">
-                        <i class="ti-panel"></i>
-                        <p>Candidates</p>
-                    </a>
-                </li>
-          <% end %>
-
-            <% @jobs.each do |job| %>
-                <li class="<%= "active" if current_page? job %>">
-                    <a href="<%= job_path(job) %>">
-                        <i class="ti-panel"></i>
-                        <p><%= job.name %></p>
-                    </a>
-                </li>
-              <% end %>
-
-
-
-        </ul>
   </div>
 </div>

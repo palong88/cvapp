@@ -14,6 +14,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+#USe for READING JSON API DATA/PARSE
+gem  'httparty'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'awesome_print', '~> 1.7'
@@ -37,7 +39,7 @@ gem 'cancancan', '~> 1.10'
 gem 'animate', '~> 0.1.0'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.3'
-
+gem 'activeresource'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

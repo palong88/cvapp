@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :load_sidebar
 
   def load_sidebar
-    @jobs = Job.all
+    # @jobs = Job.all
   end
 
   protected

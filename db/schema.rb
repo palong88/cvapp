@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027062030) do
+ActiveRecord::Schema.define(version: 20171023151637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 20161027062030) do
     t.index ["job_id"], name: "index_candidates_on_job_id", using: :btree
   end
 
+  create_table "coinmarketcaps", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cvs", force: :cascade do |t|
     t.string   "file_file_name"
     t.string   "file_content_type"
@@ -44,6 +49,11 @@ ActiveRecord::Schema.define(version: 20161027062030) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["job_id"], name: "index_cvs_on_job_id", using: :btree
+  end
+
+  create_table "dashes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -82,6 +92,11 @@ ActiveRecord::Schema.define(version: 20161027062030) do
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
     t.index ["name"], name: "index_roles_on_name", using: :btree
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
