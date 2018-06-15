@@ -1,0 +1,1 @@
+json.partial! "machine_assets/machine_asset", machine_asset: @machine_asset

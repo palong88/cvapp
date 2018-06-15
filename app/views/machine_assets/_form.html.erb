@@ -1,0 +1,121 @@
+<%= form_for(machine_asset) do |f| %>
+  <% if machine_asset.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(machine_asset.errors.count, "error") %> prohibited this machine_asset from being saved:</h2>
+
+      <ul>
+      <% machine_asset.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-lg-8 col-md-7">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Add a New Asset</h4>
+                            </div>
+                            <div class="content">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <%= f.label :asset_number %>
+                                                <%= f.number_field :asset_number, class: "form-control border-input", placeholder:"Enter Asset Number" %>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <%= f.label :asset_name %>
+                                                <%= f.text_field :asset_name, class:"form-control border-input", placeholder:"Enter Asset Name" %>
+                                                </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <%= f.text_field :asset_location, class: "form-control border-input",placeholder: "Where is the asset located"   %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <%= f.label :asset_owner %>
+                                                <%= f.text_field :asset_owner, class: "form-control border-input", placeholder: "Name of Technician" %>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                  <%= f.label :asset_technician %>
+                                                  <%= f.text_field :asset_technician, class: "form-control border-input", placeholder: "Name of Technician" %>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                               <%= f.label :asset_serial_number %>
+                                               <%= f.number_field :asset_serial_number, class: "form-control border-input", placeholder: "Serial Number" %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                              <%= f.label :asset_fluid_type %>
+                                              <%= f.text_field :asset_fluid_type, class: "form-control border-input", placeholder: "OIL/DESIEL/OTHER"    %>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                              <%= f.label :asset_criticality %>
+                                              <%= f.number_field :asset_criticality, class: "form-control border-input", placeholder: "Number" %>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                              <%= f.label :asset_status %>
+                                              <%= f.number_field :asset_status, class: "form-control border-input", placeholder: "Number" %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <%= f.label :asset_description %>
+                                                <%= f.text_area :asset_description, rows:"5", class: "form-control border-input", placeholder: "Here can be your description"  %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                      <div class="actions">
+                                        <%= f.submit 'Save Asset Details', :class => 'btn btn-info btn-fill btn-wd' %>
+                                      </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+<% end %>

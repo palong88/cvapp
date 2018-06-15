@@ -1,0 +1,2 @@
+class MachineAsset < ApplicationRecord
+end

@@ -1,0 +1,1 @@
+json.array! @machine_assets, partial: 'machine_assets/machine_asset', as: :machine_asset

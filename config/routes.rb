@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :machine_assets
   root "home#index"
   resources :tests
   resources :dash

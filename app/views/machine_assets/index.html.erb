@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to 'Add a New Asset', new_machine_asset_path, class: "btn btn-info btn-fill btn-wd" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h1>My Assets <small> Below is a list of your assets. </small></h1>
+
+  </div>
+</div>
+<div class="row">
+  <% @machine_assets.each do |machine_asset| %>
+
+      <div class="col-md-6">
+          <div class="card">
+              <div class="header">
+                  <h2 class="title"><%= machine_asset.asset_name %>   <small> Serial Number: <%= machine_asset.asset_serial_number %></small></h2>
+              </div>
+              <div class="content">
+                
+                <p class="category">Location: <%= machine_asset.asset_location %></p>
+                  <div class="footer">
+                      <div class="chart-legend">
+                        Current Status  <i class="fa fa-circle text-info"></i> <td><%= machine_asset.asset_status %></td>
+                      </div>
+                      <hr>
+                      <div class="stats">
+                          <td>  <%= link_to 'Open Details', machine_asset, class: "ti-info-alt" %></td>
+                          <td>  <%= link_to 'Edit Asset', edit_machine_asset_path(machine_asset) %></td>
+                          <td>  <%= link_to 'Delete Asset', machine_asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+<% end %>
+</div>
+
+<br>

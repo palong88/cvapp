@@ -7,10 +7,17 @@ Tip 2: you can change the color of the active button using the data-active-color
 
   <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="http://app.onerocket.io" class="simple-text">
-                Arby <strong>Alerts</strong>
+            <a href="http://app.arq.ie" class="simple-text">
+                ARQ <strong>Alerts</strong>
             </a>
         </div>
+
+        <ul class="nav">
+
+            <li class="<%= 'active' if current_page?(machine_assets_path) %>" >
+              <%= link_to('My Assets', machine_assets_path) %>
+            </li>
+        </ul>
 
 
   </div>

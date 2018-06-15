@@ -1,0 +1,2 @@
+json.extract! machine_asset, :id, :asset_number, :asset_name, :asset_description, :asset_location, :asset_owner, :asset_technician, :asset_serial_number, :asset_fluid_type, :asset_criticality, :asset_status, :created_at, :updated_at
+json.url machine_asset_url(machine_asset, format: :json)

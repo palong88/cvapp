@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  asset_number: 1
+  asset_name: MyString
+  asset_description: MyText
+  asset_location: MyString
+  asset_owner: MyString
+  asset_technician: MyString
+  asset_serial_number: 1
+  asset_fluid_type: MyString
+  asset_criticality: 1
+  asset_status: 1
+
+two:
+  asset_number: 1
+  asset_name: MyString
+  asset_description: MyText
+  asset_location: MyString
+  asset_owner: MyString
+  asset_technician: MyString
+  asset_serial_number: 1
+  asset_fluid_type: MyString
+  asset_criticality: 1
+  asset_status: 1

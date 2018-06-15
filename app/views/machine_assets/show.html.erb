@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Asset number:</strong>
+  <%= @machine_asset.asset_number %>
+</p>
+
+<p>
+  <strong>Asset name:</strong>
+  <%= @machine_asset.asset_name %>
+</p>
+
+<p>
+  <strong>Asset description:</strong>
+  <%= @machine_asset.asset_description %>
+</p>
+
+<p>
+  <strong>Asset location:</strong>
+  <%= @machine_asset.asset_location %>
+</p>
+
+<p>
+  <strong>Asset owner:</strong>
+  <%= @machine_asset.asset_owner %>
+</p>
+
+<p>
+  <strong>Asset technician:</strong>
+  <%= @machine_asset.asset_technician %>
+</p>
+
+<p>
+  <strong>Asset serial number:</strong>
+  <%= @machine_asset.asset_serial_number %>
+</p>
+
+<p>
+  <strong>Asset fluid type:</strong>
+  <%= @machine_asset.asset_fluid_type %>
+</p>
+
+<p>
+  <strong>Asset criticality:</strong>
+  <%= @machine_asset.asset_criticality %>
+</p>
+
+<p>
+  <strong>Asset status:</strong>
+  <%= @machine_asset.asset_status %>
+</p>
+
+<%= link_to 'Edit', edit_machine_asset_path(@machine_asset) %> |
+<%= link_to 'Back', machine_assets_path %>
