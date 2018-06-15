@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180614164410) do
+ActiveRecord::Schema.define(version: 20180615095332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,61 @@ ActiveRecord::Schema.define(version: 20180614164410) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "asset_sensor_data", force: :cascade do |t|
+    t.integer  "machine_asset_id"
+    t.datetime "input_date"
+    t.decimal  "asset_tempeture"
+    t.decimal  "asset_quality_score_lf"
+    t.decimal  "asset_quality_score_tdn"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["machine_asset_id"], name: "index_asset_sensor_data_on_machine_asset_id", using: :btree
+  end
 
+  create_table "candidates", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "score"
+    t.integer  "job_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "cv_file_name"
+    t.string   "cv_content_type"
+    t.integer  "cv_file_size"
+    t.datetime "cv_updated_at"
+    t.string   "recommendation"
+    t.index ["job_id"], name: "index_candidates_on_job_id", using: :btree
+  end
+
+  create_table "coinmarketcaps", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cvs", force: :cascade do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "job_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["job_id"], name: "index_cvs_on_job_id", using: :btree
+  end
+
+  create_table "dashes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "closing_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id", using: :btree
+  end
 
   create_table "machine_assets", force: :cascade do |t|
     t.integer  "asset_number"
@@ -38,8 +92,23 @@ ActiveRecord::Schema.define(version: 20180614164410) do
     t.datetime "updated_at",          null: false
   end
 
+  create_table "puppies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "breed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-
+  create_table "requirements", force: :cascade do |t|
+    t.string   "name"
+    t.string   "level"
+    t.integer  "importance"
+    t.integer  "job_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "requirement_type"
+    t.index ["job_id"], name: "index_requirements_on_job_id", using: :btree
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -81,5 +150,9 @@ ActiveRecord::Schema.define(version: 20180614164410) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
-
+  add_foreign_key "asset_sensor_data", "machine_assets"
+  add_foreign_key "candidates", "jobs"
+  add_foreign_key "cvs", "jobs"
+  add_foreign_key "jobs", "users"
+  add_foreign_key "requirements", "jobs"
 end

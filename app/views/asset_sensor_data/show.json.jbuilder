@@ -1,0 +1,1 @@
+json.partial! "asset_sensor_data/asset_sensor_datum", asset_sensor_datum: @asset_sensor_datum

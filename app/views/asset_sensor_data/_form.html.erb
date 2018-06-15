@@ -1,0 +1,42 @@
+<%= form_for(asset_sensor_datum) do |f| %>
+  <% if asset_sensor_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(asset_sensor_datum.errors.count, "error") %> prohibited this asset_sensor_datum from being saved:</h2>
+
+      <ul>
+      <% asset_sensor_datum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :machine_asset_id %>
+    <%= f.text_field :machine_asset_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :input_date %>
+    <%= f.datetime_select :input_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :asset_tempeture %>
+    <%= f.text_field :asset_tempeture %>
+  </div>
+
+  <div class="field">
+    <%= f.label :asset_quality_score_lf %>
+    <%= f.text_field :asset_quality_score_lf %>
+  </div>
+
+  <div class="field">
+    <%= f.label :asset_quality_score_tdn %>
+    <%= f.text_field :asset_quality_score_tdn %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

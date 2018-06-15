@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Machine asset:</strong>
+  <%= @asset_sensor_datum.machine_asset %>
+</p>
+
+<p>
+  <strong>Input date:</strong>
+  <%= @asset_sensor_datum.input_date %>
+</p>
+
+<p>
+  <strong>Asset tempeture:</strong>
+  <%= @asset_sensor_datum.asset_tempeture %>
+</p>
+
+<p>
+  <strong>Asset quality score lf:</strong>
+  <%= @asset_sensor_datum.asset_quality_score_lf %>
+</p>
+
+<p>
+  <strong>Asset quality score tdn:</strong>
+  <%= @asset_sensor_datum.asset_quality_score_tdn %>
+</p>
+
+<%= link_to 'Edit', edit_asset_sensor_datum_path(@asset_sensor_datum) %> |
+<%= link_to 'Back', asset_sensor_data_path %>

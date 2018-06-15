@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Asset Sensor Data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Machine asset</th>
+      <th>Input date</th>
+      <th>Asset tempeture</th>
+      <th>Asset quality score lf</th>
+      <th>Asset quality score tdn</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @asset_sensor_data.each do |asset_sensor_datum| %>
+      <tr>
+        <td><%= asset_sensor_datum.machine_asset %></td>
+        <td><%= asset_sensor_datum.input_date %></td>
+        <td><%= asset_sensor_datum.asset_tempeture %></td>
+        <td><%= asset_sensor_datum.asset_quality_score_lf %></td>
+        <td><%= asset_sensor_datum.asset_quality_score_tdn %></td>
+        <td><%= link_to 'Show', asset_sensor_datum %></td>
+        <td><%= link_to 'Edit', edit_asset_sensor_datum_path(asset_sensor_datum) %></td>
+        <td><%= link_to 'Destroy', asset_sensor_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+      >
+
+    <% end %>
+    <h4>IMPORT DATA</h4>
+        <%= form_tag import_asset_sensor_data_path, multpart: true do %>
+        <%= file_field_tag :file, accept: 'text/csv' %>
+        <%= submit_tag "import CSV" %>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+<%= link_to 'New Asset Sensor Datum', new_asset_sensor_datum_path %>

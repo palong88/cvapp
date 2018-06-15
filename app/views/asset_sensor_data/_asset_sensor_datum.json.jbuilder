@@ -1,0 +1,2 @@
+json.extract! asset_sensor_datum, :id, :machine_asset_id, :input_date, :asset_tempeture, :asset_quality_score_lf, :asset_quality_score_tdn, :created_at, :updated_at
+json.url asset_sensor_datum_url(asset_sensor_datum, format: :json)

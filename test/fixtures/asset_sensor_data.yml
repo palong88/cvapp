@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  machine_asset: one
+  input_date: 2018-06-15 10:53:32
+  asset_tempeture: 9.99
+  asset_quality_score_lf: 9.99
+  asset_quality_score_tdn: 9.99
+
+two:
+  machine_asset: two
+  input_date: 2018-06-15 10:53:32
+  asset_tempeture: 9.99
+  asset_quality_score_lf: 9.99
+  asset_quality_score_tdn: 9.99
